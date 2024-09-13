@@ -20,25 +20,39 @@ rl.prompt()
 
 rl.on("line",(v)=>{
 
-    if (v) {
+    function next() {
       q[index] = v;
       index++
     }
     
-    if (index == q.length) {
-      createFile(q[1] , q[0])
-      return
+    if (v == ".exit") {
+      process.exit();
     }
 
-    if (v == ".exit") {
-      process. exit()
+    if (q[index] == "url") {
+      if (v.search("http") == -1 || v.search(".") == -1 ) {
+        console.log("this not an url try again ...".red);
+      } else{
+        next();
+      }
+    }else{
+      v ? next() : null;
     }
+
+    if (index == q.length) {
+      createFile(q[1] , q[0])
+      return;
+    }
+
+
 
     rl.setPrompt(" "+q[index] + ": ");
     rl.prompt() 
 
   
 })
+
+
 
 
 function createFile(content , name){
