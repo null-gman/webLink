@@ -1,15 +1,13 @@
 {
   "name": "weblinks",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "webLinks.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "build" : "pkg main.js --target node18-win-x64 --output webLink.exe"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "description": "",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "pkg": "^5.8.1"
   }
 }

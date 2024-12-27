@@ -1,9 +1,21 @@
-# welcom to weblink!
+# welcom to weblink! 2.0.0
 
-this app take from user a title and url and craete at the same dir html file that redirect to the url users inputs .
+this app take from user a 'file name' and 'website url' to **craete** at the **same dir** html file that redirect to that website from default browser that user uses .
 
-## how to use ?
+## Usage
 
-add the exe file in PATH variables , then you can run it from cmd anyware :
+* type ".exit" to exit the program .
+* you must a valid 'file name' , chars that are not allowed :
 
-  ![image](https://github.com/user-attachments/assets/dbc06e65-c7c4-40da-9b54-66693926bb2f)
+
+| char             |   replacd by   |
+| ---------------- | :-------------: |
+| ' " ' AND " ' " |      NULL      |
+| white space " "  | underscore "_" |
+
+
+
+* you are resposable for the url the program cuurntrly not donig any cheack or format to url .
+* the program uses the DIR that run on it to create an file.
+
+> ©null-gman 2024
