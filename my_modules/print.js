@@ -1,22 +1,27 @@
-const COLORS = require('colors'); /* it's efecte prototype */
+/* myMdules print.js */
 /*
  - Ptint object have methodes that console.log with colors 
 */
 
+const RED = "\x1b[31m";
+const GREEN = "\x1b[32m";
+const YELLOW = "\x1b[33m";
+const RESET = "\x1b[0m";
+// const GRAY = "\x1b[90m";
 
 const Print = {};
 
 
 Print.red = (string = "") => {
-  console.log(stringFormat(string).red);
+  console.log(RED+stringFormat(string)+RESET);
 }
 
 Print.yellow = (string = "") => {
-  console.log(stringFormat(string).yellow);
+  console.log(YELLOW+stringFormat(string)+RESET);
 }
 
 Print.green = (string = "") => {
-  console.log(stringFormat(string).green);
+  console.log(GREEN+stringFormat(string)+RESET);
 }
 
 
