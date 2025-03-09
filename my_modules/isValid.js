@@ -14,23 +14,24 @@ const IS_VALID = {};
 IS_VALID.url = (string) => {
   string = String(string);
   string = string.trim();
-  if (!string) return false;
+  if (string === "") return false;
   return true;
 }
 
 IS_VALID.filename = (string) => {
+  
   string = String(string);
   string = string.trim();
+  if (string === "") return false;
 
-  if (!string) return false;
-
-  return true
+  return true;
 
 }
 
-IS_VALID.dir = (string) => {
-  return true
-}
+
+// IS_VALID.dir = (string) => {
+//   return true;
+// }
 
 
 
