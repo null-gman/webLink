@@ -4,7 +4,8 @@ const CreateFile = require("./my_modules/createFile.js"); /*  CreateFile obj giv
 
 
 async function main() {
-  Print.green("---WELLCOM TO WEBLINKS 2.0.0 ---\n\0");
+
+  Print.green("---WELLCOM TO WEBLINKS 2.5.0 ---\n\0");
 
   const { url, dir_name } = await getInputs();
 
@@ -26,7 +27,8 @@ function getInputs() {
     DataObj.url = await Input.url();
     console.log(); //break line after inputs
 
-    DataObj.dir_name = DataObj.dir + "\\" + DataObj.fileName;
+    DataObj.dir_name = DataObj.dir + "/" + DataObj.fileName; /*for linux */
+    // DataObj.dir_name = DataObj.dir + "\\" + DataObj.fileName; /*for windows */
     resolve(DataObj);
   })
 
