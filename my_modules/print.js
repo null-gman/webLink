@@ -13,15 +13,15 @@ const Print = {};
 
 
 Print.red = (string = "") => {
-  console.log(RED+stringFormat(string)+RESET);
+  return (RED+stringFormat(string)+RESET);
 }
 
 Print.yellow = (string = "") => {
-  console.log(YELLOW+stringFormat(string)+RESET);
+  return(YELLOW+stringFormat(string)+RESET);
 }
 
 Print.green = (string = "") => {
-  console.log(GREEN+stringFormat(string)+RESET);
+  return(GREEN+stringFormat(string)+RESET);
 }
 
 
