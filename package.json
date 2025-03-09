@@ -2,12 +2,9 @@
   "name": "weblinks",
   "version": "2.0.0",
   "main": "main.js",
+  "type": "commonjs",
   "scripts": {
-      "build" : "pkg main.js --target node18-win-x64 --output webLink.exe"
+    "start": "npm main.js"
   },
-  "description": "",
-  "dependencies": {
-    "colors": "^1.4.0",
-    "pkg": "^5.8.1"
-  }
+  "description": ""
 }
