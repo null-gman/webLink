@@ -61,15 +61,15 @@ Input.fileName = () => {
 
 Input.dir = () => {
   return new Promise(async (resolve) => {
-    const value = await input("dir (if it blank then the crunnt dir was selecteted):",null,FORMAT.dir);
-    resolve(value);
+    const value = await input("dir[If no directory is specified,the current directory will be used]:",null,FORMAT.dir);
+    resolve(value); 
   })
 }
 
 
 Input.exit = () => {
   const Rd = readline.createInterface(STD);
-  const myPrompt = () => prompt(Rd, `press enter to exit ...`.yellow);
+  const myPrompt = () => prompt(Rd, `press enter to exit ...`);
   myPrompt();
   return new Promise((resolve) => {
     Rd.on("line", () => {
