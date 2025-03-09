@@ -1,6 +1,6 @@
-# welcom to weblink! 2.0.0
+# welcom to weblink! 2.5.0
 
-this app take from user a 'file name' and 'website url' to **craete** at the **same dir** html file that redirect to that website from default browser that user uses .
+this script take from user a 'file name' , 'website url'  and 'dir' to **craete** and html file that redirect to that website from default browser that user uses .
 
 ## Usage
 
@@ -16,6 +16,19 @@ this app take from user a 'file name' and 'website url' to **craete** at the **s
 
 
 * you are resposable for the url the program cuurntrly not donig any cheack or format to url .
-* the program uses the DIR that run on it to create an file.
 
-> ©null-gman 2024
+
+### to use this script on linux or windows :
+1. in */main.js** got to these 2 lines :
+```
+    DataObj.dir_name = DataObj.dir + "/" + DataObj.fileName; /*for linux */
+    DataObj.dir_name = DataObj.dir + "\\" + DataObj.fileName; /*for windows */
+```
+2. Comment out the unused platform based on the system you're working on.
+
+3. by defualt it will be linux based :
+```
+    DataObj.dir_name = DataObj.dir + "/" + DataObj.fileName; /*for linux */
+    //DataObj.dir_name = DataObj.dir + "\\" + DataObj.fileName; /*for windows */
+```
+> ©null-gman 2025
