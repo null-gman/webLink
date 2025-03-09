@@ -46,8 +46,6 @@ CreateFile.webLink = (fileName, webSiteUrl) => {
       }
       const msg = Print.green(`>> '${fullname}' was created`);
       console.log(msg);
-  
-      console.log(); /* breack line */
       resolve(1)
     })
   })
