@@ -1,6 +1,5 @@
 const fs = require('node:fs');
 const Print = require("./print.js");
-const COLORS = require('colors'); /* it's efecte prototype */
 
 
 /*
@@ -40,11 +39,14 @@ CreateFile.webLink = (fileName, webSiteUrl) => {
 
     fs.writeFile(fullname, CONTENT, (err) => {
       if (err) {
-        Print.red(`>> error with creating a '${fullname}'`);
+        const msg = Print.red(`>> error with creating a '${fullname}'`);
+        console.log(msg);
         resolve(0)
         return;
       }
-      Print.green(`>> '${fullname}' was created`);
+      const msg = Print.green(`>> '${fullname}' was created`);
+      console.log(msg);
+  
       console.log(); /* breack line */
       resolve(1)
     })
