@@ -1,13 +1,10 @@
 const readline = require('node:readline');
-const COLORS = require('colors');
-const FORMAT = require('./format');
-const IS_VALID = require('./isValid');
-
-
+const FORMAT = require('./format.js');
+const IS_VALID = require('./isValid.js');
+const Print  = require("./print.js");
 /*
  - Input object have methodes that act like input()in python with check vlue : "!they are promeses!"
 */
-
 
 const STD = {
   input: process.stdin,
@@ -16,11 +13,11 @@ const STD = {
 
 const Input = {};
 
-Input.url = () => {
-  const Rd = readline.createInterface(STD);
-  const myPrompt = () => prompt(Rd, " url : ".yellow);
-  myPrompt();
 
+function input(msg,callBackCheck,callBackFormat) {
+  const Rd = readline.createInterface(STD);
+  const myPrompt = () => prompt(Rd, msg);
+  myPrompt();
   return new Promise((resolve) => {
     Rd.on("line", (value) => {
       if (isExist(value)) {
@@ -28,9 +25,11 @@ Input.url = () => {
         process.exit();
         return;
       }
-
-      if (IS_VALID.url(value)) {
-        value = FORMAT.url(value);
+      
+      
+      if (callBackCheck?callBackCheck(value):true ) {
+        value = value.trim();
+        value = callBackFormat?callBackFormat(value):value;
         resolve(value)
         Rd.close();
         return;
@@ -38,57 +37,33 @@ Input.url = () => {
       myPrompt();
     })
   })
-
 }
 
-Input.fileName = () => {
-  const Rd = readline.createInterface(STD);
-  const myPrompt = () => prompt(Rd, " file name : ".yellow);
-  myPrompt();
 
-  return new Promise((resolve) => {
-    Rd.on("line", (value) => {
-      if (isExist(value)) {
-        Rd.close();
-        process.exit();
-        return;
-      }
-
-      if (IS_VALID.filename(value)) {
-        value = FORMAT.fileName(value);
-        resolve(value)
-        Rd.close();
-        return;
-      }
-      myPrompt();
-    })
+Input.url =  () => {
+  return new Promise(async (resolve) => {
+    const value = await input("url :",IS_VALID.url,FORMAT.url);
+    resolve(value);
   })
+ 
+}
 
+
+
+Input.fileName = () => {
+  return new Promise(async (resolve) => {
+    const value = await input("file name :",IS_VALID.filename,FORMAT.fileName);
+    resolve(value);
+  })
+ 
 }
 
 
 Input.dir = () => {
-  const Rd = readline.createInterface(STD);
-  const myPrompt = () => prompt(Rd, " dir : ".yellow);
-  myPrompt();
-
-  return new Promise((resolve) => {
-    Rd.on("line", (value) => {
-      if (isExist(value)) {
-        Rd.close();
-        process.exit();
-        return;
-      }
-      if (IS_VALID.dir(value)) {
-        value = FORMAT.dir(value);
-        resolve(value)
-        Rd.close();
-        return;
-      }
-      myPrompt();
-    })
+  return new Promise(async (resolve) => {
+    const value = await input("dir (if it blank then the crunnt dir was selecteted):",null,FORMAT.dir);
+    resolve(value);
   })
-
 }
 
 
@@ -109,6 +84,10 @@ Input.exit = () => {
 
 
 function isExist(string) {
+  if (!string) {
+    return false;
+  }
+
   string = String(string);
   string = string.trim();
   string = string.toLowerCase();
@@ -122,10 +101,20 @@ function prompt(rdObj, text = "") {
   if (!rdObj) {
     throw new Error("not an readline object");
   }
-
   rdObj.setPrompt(text);
   rdObj.prompt();
 }
+
+
+
+// async function test(){
+
+//   const res = await Input.url();
+//   console.log(res);
+  
+// }
+
+// test();
 
 
 module.exports = Input;
