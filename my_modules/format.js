@@ -10,12 +10,11 @@ FORMAT.url = (string) => {
 
 
 FORMAT.dir = (string) => {
-  string = String(string).trim();
-  string = formatSTring(string);
-  
   if (!string) {
     return getDir();
   }
+
+  string = formatSTring(string);
   return string;
 }
 
